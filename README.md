@@ -181,10 +181,9 @@ const example = "user:password@host"; // envsentinel:ignore generic-assignment,u
   "summary": {
     "filesScanned": 4,
     "filesSkipped": 0,
-    "findings": 3,
-    "bySeverity": { "critical": 2, "high": 1, "medium": 0, "low": 0 },
-    "highestSeverity": "critical",
-    "durationMs": 160
+    "durationMs": 160,
+    "counts": { "critical": 2, "high": 1, "medium": 0, "low": 0 },
+    "total": 3
   },
   "findings": [
     {
