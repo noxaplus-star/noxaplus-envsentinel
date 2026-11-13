@@ -1,0 +1,38 @@
+name: Feature request
+description: Suggest a rule, an output improvement, or a workflow change.
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem are you hitting?
+      description: Describe the false positive, missed shape, or workflow friction. Do not include real secrets.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What would you like EnvSentinel to do?
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - New detection rule
+        - Fewer false positives
+        - Reporting (text, JSON, SARIF)
+        - Pre-commit hook
+        - Configuration
+        - CLI
+        - Documentation
+    validations:
+      required: true
+  - type: input
+    id: reference
+    attributes:
+      label: Provider documentation or reference
+      description: Link the public docs for a token format if this is a new rule.
+    validations:
+      required: false

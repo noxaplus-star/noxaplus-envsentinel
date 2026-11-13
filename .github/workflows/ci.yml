@@ -1,0 +1,47 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run build
+      - name: Scan the repository itself
+        run: node dist/cli.js scan
+      - name: List rules
+        run: node dist/cli.js rules
+      - name: Smoke test staged scanning and SARIF output
+        run: |
+          set -eu
+          WORK="$(mktemp -d)"
+          cd "$WORK"
+          git init -q
+          printf 'const key = "AKIA%s";\n' "IOSFODNN7EXAMPLQ" > app.ts
+          git add app.ts
+          set +e
+          node "$GITHUB_WORKSPACE/dist/cli.js" scan --staged --format sarif --out report.sarif
+          STATUS=$?
+          set -e
+          test "$STATUS" -eq 1
+          test -s report.sarif
+          grep -q '"version": "2.1.0"' report.sarif
+          grep -q 'aws-access-key-id' report.sarif
+          echo "Staged scan correctly failed the commit candidate."
+      - name: Smoke test JSON output
+        run: |
+          set -eu
+          node dist/cli.js scan --format json --out report.json
+          node -e "const r=require('./report.json'); if (r.tool!=='envsentinel'||r.summary.findings!==0) process.exit(1)"

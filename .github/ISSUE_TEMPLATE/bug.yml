@@ -1,0 +1,57 @@
+name: Bug report
+description: A scan missed something, reported something wrong, or misbehaved.
+labels: [bug]
+body:
+  - type: input
+    id: version
+    attributes:
+      label: EnvSentinel version
+      placeholder: 1.0.0
+    validations:
+      required: true
+  - type: dropdown
+    id: mode
+    attributes:
+      label: Scan mode
+      options:
+        - Working tree (default)
+        - Staged (--staged)
+        - Pre-commit hook
+        - install-hook
+    validations:
+      required: true
+  - type: input
+    id: command
+    attributes:
+      label: Command you ran
+      placeholder: envsentinel scan --staged --fail-on high
+    validations:
+      required: true
+  - type: textarea
+    id: sample
+    attributes:
+      label: Synthetic sample that reproduces it
+      description: Use a fake value with the same shape. Never paste a real credential, private key, or customer data.
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect?
+      description: Which rule should match, or which line should have been ignored?
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: What happened?
+      description: Paste the redacted output and the exit code.
+    validations:
+      required: true
+  - type: textarea
+    id: config
+    attributes:
+      label: Relevant config
+      description: Paste `.envsentinel.json` with any sensitive patterns removed.
+      render: json

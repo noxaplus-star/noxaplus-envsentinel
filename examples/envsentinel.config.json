@@ -1,0 +1,8 @@
+{
+  "ignorePaths": ["fixtures/**", "docs/samples/**"],
+  "ignoreRules": ["stripe-test-key"],
+  "allowPatterns": ["example\\.invalid", "REPLACE_ME_[A-Z]+"],
+  "entropyThreshold": 4.5,
+  "entropyMinLength": 32,
+  "maxFileSizeKb": 1024
+}

@@ -1,0 +1,54 @@
+{
+  "name": "noxaplus-envsentinel",
+  "version": "1.0.0",
+  "description": "Find leaked secrets and risky config before they reach git. A local scanner with entropy checks, allowlists, SARIF output, and a pre-commit hook. Built by NoxaPlus.",
+  "keywords": [
+    "security",
+    "secrets",
+    "secret-scanning",
+    "sarif",
+    "pre-commit",
+    "git",
+    "cli",
+    "developer-tools",
+    "noxaplus"
+  ],
+  "author": "NoxaPlus <NoxaPlus2025@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/noxaplus-star/noxaplus-envsentinel",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/noxaplus-star/noxaplus-envsentinel.git"
+  },
+  "bugs": {
+    "url": "https://github.com/noxaplus-star/noxaplus-envsentinel/issues"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "bin": {
+    "envsentinel": "./dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "examples",
+    "docs/scan.png",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "scan": "node dist/cli.js scan examples",
+    "prepare": "npm run build"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.0",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.4"
+  }
+}
