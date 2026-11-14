@@ -44,4 +44,4 @@ jobs:
         run: |
           set -eu
           node dist/cli.js scan --format json --out report.json
-          node -e "const r=require('./report.json'); if (r.tool!=='envsentinel'||r.summary.findings!==0) process.exit(1)"
+          node -e "const r=require('./report.json'); if (r.tool!=='envsentinel'||r.summary.total!==0) process.exit(1)"
