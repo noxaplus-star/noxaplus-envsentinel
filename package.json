@@ -1,6 +1,6 @@
 {
   "name": "noxaplus-envsentinel",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Find leaked secrets and risky config before they reach git. A local scanner with entropy checks, allowlists, SARIF output, and a pre-commit hook. Built by NoxaPlus.",
   "keywords": [
     "security",

@@ -1,3 +1,5 @@
+<p align="center"><img src="docs/brand.png" alt="NoxaPlus" width="520"></p>
+
 # NoxaPlus EnvSentinel
 
 **The secret you are about to commit is the one that gets you paged on a Saturday.**
